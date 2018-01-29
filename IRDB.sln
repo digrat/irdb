@@ -3,26 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "IRDB", "..\..\WebSites\IRDB\", "{1142BACC-C68E-4C07-8116-231C5EEBB4D1}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite", "WebSite\", "{8F211050-08A2-480E-8E48-1202331D1A71}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_58965"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\WebSites\IRDB\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58965\"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_58033"
+		Debug.AspNetCompiler.PhysicalPath = "WebSite\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58033\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_58965"
-		Release.AspNetCompiler.PhysicalPath = "..\..\WebSites\IRDB\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58965\"
+		Release.AspNetCompiler.VirtualPath = "/localhost_58033"
+		Release.AspNetCompiler.PhysicalPath = "WebSite\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58033\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "58965"
-		SlnRelativePath = "..\..\WebSites\IRDB\"
-		DefaultWebSiteLanguage = "Visual C#"
+		VWDPort = "58033"
+		SlnRelativePath = "WebSite\"
 	EndProjectSection
 EndProject
 Global
@@ -30,8 +29,8 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1142BACC-C68E-4C07-8116-231C5EEBB4D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1142BACC-C68E-4C07-8116-231C5EEBB4D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F211050-08A2-480E-8E48-1202331D1A71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F211050-08A2-480E-8E48-1202331D1A71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

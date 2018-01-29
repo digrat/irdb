@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="Queue" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -7,10 +7,10 @@
     <div class="row">
         <h1>Request Queue</h1>
         <div>
-            <asp:Button ID="Search" runat="server" Text="Filter" OnClick="Search_Click"/>
             <asp:DropDownList ID="UserList" runat="server" AppendDataBoundItems="true">
                 <asp:ListItem Text="Select User" Value="none"/>
             </asp:DropDownList>
+            <asp:Button ID="Search" runat="server" Text="Filter" OnClick="Search_Click"/>
             <asp:GridView ID="GridView1"
                 runat="server" 
                 AllowSorting="true" 
