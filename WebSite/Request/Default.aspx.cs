@@ -38,6 +38,7 @@ public partial class _Default : System.Web.UI.Page
             LoadDropdowns();
             PopulateRequestDetailsFromCookie();
             PopulateAttachmentFromCookie();
+            PopulateIcnListFromCookie();
         }
     }
 
@@ -203,8 +204,8 @@ public partial class _Default : System.Web.UI.Page
                     string matchingFiles = FindMatchesInAttachmentsCookie(li.Text);
                     if (matchingFiles.Length > 0)
                     {
-                        System.Diagnostics.Debug.WriteLine("ICN: " + li.Text + " Matching files: " + matchingFiles);
-                        System.Diagnostics.Debug.WriteLine("SELECT request_index_number FROM ILLUSTRATION_REQUEST WHERE filename = '" + li.Text + "' AND request_date = #" + timeStamp + "#");
+                        //System.Diagnostics.Debug.WriteLine("ICN: " + li.Text + " Matching files: " + matchingFiles);
+                        //System.Diagnostics.Debug.WriteLine("SELECT request_index_number FROM ILLUSTRATION_REQUEST WHERE filename = '" + li.Text + "' AND request_date = #" + timeStamp + "#");
 
                         // If there are matching files, find the request_index_number of the record we just added.
                         DataSet destination = ReadFromDatabase("SELECT request_index_number FROM ILLUSTRATION_REQUEST WHERE filename = '" + li.Text + "' AND request_date = #" + timeStamp + "#");
@@ -228,11 +229,25 @@ public partial class _Default : System.Web.UI.Page
             {
                 ErrorDisplay("Error saving the following ICNs: " + illustrationControlNumbersErrored, true);
             }
+
+            ClearFormOnSubmit();
+            Server.Transfer("Submitted.aspx", true);
+
         }
         else
         {
             ErrorDisplay("Unable to save request. One or more required fields is empty.");
         }
+    }
+
+    private void ClearFormOnSubmit()
+    {
+        // Partially clear request details
+        CreateRequestDetailsCookie(true);
+        // Remove ICNs
+        ClearCookie(icnListCookie);
+        // Remove attachments
+        ClearCookie(attachmentsCookie);
     }
 
     protected void DeleteIllustrationControlNumber_Click(object sender, EventArgs e)
@@ -343,8 +358,14 @@ public partial class _Default : System.Web.UI.Page
             // Parse out the platform number from Platform.SelectedValue
             string PlatformNumber = FindPlatform.SelectedValue.Substring(0, FindPlatform.SelectedValue.IndexOf("|"));
             string FunctionalGroupNumber = FindFunctionalGroup.SelectedValue;
+            string manualType = GetCookieValue(requestDetailsCookie, "ManualType");
+            if (manualType == null)
+            {
+                manualType = "*";
+            }
+
             // Function returns the current max unique ID; add 1 for the new ICN.
-            PopulateListBox("select illustration_control_number from illustration_control_number_breakdown where platform = '" + PlatformNumber + "' and functional_group = '" + FunctionalGroupNumber + "'",
+            PopulateListBox("select illustration_control_number from illustration_control_number_breakdown where platform = '" + PlatformNumber + "' and functional_group = '" + FunctionalGroupNumber + "' and type = '" + manualType + "'",
                 FindICNList, "illustration_control_number", "illustration_control_number", con);
         }
         else
@@ -428,8 +449,9 @@ public partial class _Default : System.Web.UI.Page
         if (foundMatch == false)
         {
             pageControl.Items.Add(newIllustrationControlNumber);
+            // Also update the ICN List cookie
+            CreateIcnListCookie(pageControl);
         }
-
     }
 
     /******************************************/
@@ -605,10 +627,8 @@ public partial class _Default : System.Web.UI.Page
 
         if (Request.Cookies[requestDetailsCookie] != null)
         {
-            System.Collections.Specialized.NameValueCollection UserInfoCookieCollection;
-            UserInfoCookieCollection = Request.Cookies[requestDetailsCookie].Values;
-            string projectNumber = Request.Cookies[requestDetailsCookie]["Project"];
-            string userName = Request.Cookies[requestDetailsCookie]["UserName"];
+            string projectNumber = GetCookieValue(requestDetailsCookie, "Project");
+            string userName = GetCookieValue(requestDetailsCookie,"UserName");
 
             // destinationFolder stored in a global variable so it doesn't need to be fetched from the DB on each upload.
             if (destinationFolder == null)
@@ -640,33 +660,13 @@ public partial class _Default : System.Web.UI.Page
         return Path.GetFileNameWithoutExtension(fileName) + " " + DateTime.Now.ToString(dateTimeFormat) + Path.GetExtension(fileName);
     }
 
-
     /****************************/
     /* COOKIE INTERFACE METHODS */
     /****************************/
 
-    protected void CreateRequestDetailsCookie(object sender, EventArgs e)
+    protected void NewRequestDetailsCookie(object sender, EventArgs e)
     {
-        HttpCookie createRequestCookie = new HttpCookie(requestDetailsCookie);
-
-        //System.Diagnostics.Debug.WriteLine("To Cookie - UserName: " + UserName.SelectedValue.ToString());
-        //System.Diagnostics.Debug.WriteLine("To Cookie - Project: " + Project.SelectedValue.ToString());
-        //System.Diagnostics.Debug.WriteLine("To Cookie - RequestType: " + RequestType.SelectedValue.ToString());
-        //System.Diagnostics.Debug.WriteLine("To Cookie - ManualType: " + ManualType.SelectedValue.ToString());
-        //System.Diagnostics.Debug.WriteLine("To Cookie - DataModuleCode: " + DataModuleCode.Text);
-        //System.Diagnostics.Debug.WriteLine("To Cookie - DataModuleTitle: " + DataModuleTitle.Text);
-        //System.Diagnostics.Debug.WriteLine("To Cookie - ConversionSource: " + ConversionSource.Text);
-
-        createRequestCookie.Values["UserName"] = UserName.SelectedValue.ToString();
-        createRequestCookie.Values["Project"] = Project.SelectedValue.ToString();
-        createRequestCookie.Values["RequestType"] = RequestType.SelectedValue.ToString();
-        createRequestCookie.Values["ManualType"] = ManualType.SelectedValue.ToString();
-        createRequestCookie.Values["DataModuleCode"] = DataModuleCode.Text;
-        createRequestCookie.Values["DataModuleTitle"] = DataModuleTitle.Text;
-        createRequestCookie.Values["ConversionSource"] = ConversionSource.Text;
-
-        createRequestCookie.Expires = DateTime.Now.AddDays(cookieExpireDays);  // Set cookie expiration date
-        Response.Cookies.Add(createRequestCookie);
+        CreateRequestDetailsCookie(false);
     }
 
     private void CreateAttachmentCookie(string amendedFileName, string filePath)
@@ -677,22 +677,45 @@ public partial class _Default : System.Web.UI.Page
         Response.Cookies.Add(createAttachmentCookie);
     }
 
-    private void ClearRequestDetailsCookie()
+    private void CreateIcnListCookie(ListBox pageControl)
     {
-        HttpCookie createRequestCookie = new HttpCookie(requestDetailsCookie)
+        string icnList = "";
+        foreach (ListItem li in pageControl.Items)
         {
-            Expires = DateTime.Now.AddDays(-1)  // Set cookie expiration date
-        };
+            icnList = icnList + "|" + li.Text;
+        }
+        if (icnList.Length > 0)
+        {
+            // Remove leftmost character "|"
+            icnList = icnList.Substring(1);
+        }
+        Response.Cookies[icnListCookie].Value = icnList;
+        Response.Cookies[icnListCookie].Expires = DateTime.Now.AddDays(cookieExpireDays);
+    }
+
+    private void CreateRequestDetailsCookie(bool partial = false)
+    {
+        HttpCookie createRequestCookie = new HttpCookie(requestDetailsCookie);
+        createRequestCookie.Values["UserName"] = UserName.SelectedValue.ToString();
+        createRequestCookie.Values["Project"] = Project.SelectedValue.ToString();
+        createRequestCookie.Values["RequestType"] = RequestType.SelectedValue.ToString();
+        createRequestCookie.Values["ManualType"] = ManualType.SelectedValue.ToString();
+        // After submit, partial == true
+        // Retain only some of the request detail fields after submit
+        if (partial == false)
+        {
+            createRequestCookie.Values["DataModuleCode"] = DataModuleCode.Text;
+            createRequestCookie.Values["DataModuleTitle"] = DataModuleTitle.Text;
+            createRequestCookie.Values["ConversionSource"] = ConversionSource.Text;
+        }
+
+        createRequestCookie.Expires = DateTime.Now.AddDays(cookieExpireDays);  // Set cookie expiration date
         Response.Cookies.Add(createRequestCookie);
     }
 
-    private void ClearAttachmentCookie()
+    private void ClearCookie(string cookieName)
     {
-        HttpCookie createRequestCookie = new HttpCookie(attachmentsCookie)
-        {
-            Expires = DateTime.Now.AddDays(-1)  // Set cookie expiration date
-        };
-        Response.Cookies.Add(createRequestCookie);
+        Response.Cookies[cookieName].Expires = DateTime.Now.AddDays(-1);  // Set cookie expiration date
     }
 
     private void PopulateRequestDetailsFromCookie()
@@ -743,6 +766,21 @@ public partial class _Default : System.Web.UI.Page
         }
     }
 
+    private void PopulateIcnListFromCookie()
+    {
+        HttpCookie myCookie = Request.Cookies[icnListCookie];
+        if (myCookie != null)
+        {
+            //System.Diagnostics.Debug.WriteLine("myCookie != null");
+            // Split out cookie values on |
+            foreach (string currentIcn in myCookie.Value.Split('|'))
+            {
+                //System.Diagnostics.Debug.WriteLine("myCookie value to add: " + currentIcn);
+                AddIllustrationControlNumberToTextbox(currentIcn, IllustrationControlNumbers);
+            }
+        }
+    }
+
     private void AddToAttachmentCookie(string amendedFileName, string filePath)
     {
         HttpCookie oldCookie = Request.Cookies[attachmentsCookie];
@@ -784,7 +822,7 @@ public partial class _Default : System.Web.UI.Page
 
     protected void ClearAttachments_Click(object sender, EventArgs e)
     {
-        ClearAttachmentCookie();
+        ClearCookie(attachmentsCookie);
         PopulateAttachmentFromCookie();
     }
 
@@ -839,7 +877,7 @@ public partial class _Default : System.Web.UI.Page
         }
 
         // If this filename looks like an ICN and the start of the filename matches this ICN, it's a match.
-        if (System.Text.RegularExpressions.Regex.IsMatch(filename, regExMatch) && filename.Substring(0,substringSearchLength) == illustrationControlNumber)
+        if (System.Text.RegularExpressions.Regex.IsMatch(filename, regExMatch) && filename.Substring(0, substringSearchLength) == illustrationControlNumber)
         {
             System.Diagnostics.Debug.WriteLine("Regex Match && Filename Match");
             return true;
@@ -857,4 +895,19 @@ public partial class _Default : System.Web.UI.Page
             return false;
         }
     }
+
+    private string GetCookieValue(string cookieName, string cookieValueName)
+    {
+        if (Request.Cookies[cookieName] != null)
+        {
+            System.Collections.Specialized.NameValueCollection UserInfoCookieCollection;
+            UserInfoCookieCollection = Request.Cookies[cookieName].Values;
+            return Request.Cookies[cookieName][cookieValueName];
+        }
+        else
+        {
+            return null;
+        }
+    }
+
 }

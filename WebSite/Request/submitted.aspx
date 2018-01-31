@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Requests Submitted" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="submitted.aspx.cs" Inherits="Queue_success" %>
+﻿<%@ Page Title="Requests Submitted" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Submitted.aspx.cs" Inherits="Queue_success" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 

@@ -43,29 +43,29 @@
                 <asp:UpdatePanel ID="RequestDetails" runat="server" ChildrenAsTriggers="true" >
                     <ContentTemplate>
                         <label>User Name</label><br />
-                        <asp:DropDownList ID="UserName" runat="server" BorderStyle="Groove" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="CreateRequestDetailsCookie">
+                        <asp:DropDownList ID="UserName" runat="server" BorderStyle="Groove" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="NewRequestDetailsCookie">
                         </asp:DropDownList>
                         <br />
                         <label>Project Name</label><br />
-                        <asp:DropDownList ID="Project" runat="server" BorderStyle="Groove" AppendDataBoundItems="true" Width="180" AutoPostBack="true" OnSelectedIndexChanged="CreateRequestDetailsCookie">
+                        <asp:DropDownList ID="Project" runat="server" BorderStyle="Groove" AppendDataBoundItems="true" Width="180" AutoPostBack="true" OnSelectedIndexChanged="NewRequestDetailsCookie">
                         </asp:DropDownList>
                         <br />
                         <label>Request Type</label><br />
-                        <asp:DropDownList ID="RequestType" runat="server" BorderStyle="Groove" AppendDataBoundItems="true" Width="180" AutoPostBack="true" OnSelectedIndexChanged="CreateRequestDetailsCookie">
+                        <asp:DropDownList ID="RequestType" runat="server" BorderStyle="Groove" AppendDataBoundItems="true" Width="180" AutoPostBack="true" OnSelectedIndexChanged="NewRequestDetailsCookie">
                         </asp:DropDownList>
                         <br />
                         <label>Manual Type</label><br />
-                        <asp:DropDownList ID="ManualType" runat="server" BorderStyle="Groove" AppendDataBoundItems="true" Width="180" AutoPostBack="true" OnSelectedIndexChanged="CreateRequestDetailsCookie">
+                        <asp:DropDownList ID="ManualType" runat="server" BorderStyle="Groove" AppendDataBoundItems="true" Width="180" AutoPostBack="true" OnSelectedIndexChanged="NewRequestDetailsCookie">
                         </asp:DropDownList>
                         <br />
                         <label>DMC / WP / Chapter</label><br />
-                        <asp:TextBox ID="DataModuleCode" runat="server" BorderStyle="Groove" Width="365px" AutoPostBack="true" OnTextChanged="CreateRequestDetailsCookie"/>
+                        <asp:TextBox ID="DataModuleCode" runat="server" BorderStyle="Groove" Width="365px" AutoPostBack="true" OnTextChanged="NewRequestDetailsCookie"/>
                         <br />
                         <label>Title</label><br />
-                        <asp:TextBox ID="DataModuleTitle" runat="server" BorderStyle="Groove" Width="365px" AutoPostBack="true" OnTextChanged="CreateRequestDetailsCookie"/>
+                        <asp:TextBox ID="DataModuleTitle" runat="server" BorderStyle="Groove" Width="365px" AutoPostBack="true" OnTextChanged="NewRequestDetailsCookie"/>
                         <br />
                         <label>Conversion Source</label><br />
-                        <asp:TextBox ID="ConversionSource" runat="server" BorderStyle="Groove" Width="365px" AutoPostBack="true" OnTextChanged="CreateRequestDetailsCookie"/>
+                        <asp:TextBox ID="ConversionSource" runat="server" BorderStyle="Groove" Width="365px" AutoPostBack="true" OnTextChanged="NewRequestDetailsCookie"/>
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </td>
