@@ -2,32 +2,9 @@
 <?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio\2017\community\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
 <FxCopReport Version="15.0">
  <Targets>
-  <Target Name="C:\Users\bcook\AppData\Local\Temp\tmpC52.tmp.cadir\bin\App_Web_kwicgvsk.dll">
+  <Target Name="C:\Users\bcook\AppData\Local\Temp\tmpE9C.tmp.cadir\bin\App_Web_0dgso1xh.dll">
    <Modules>
-    <Module Name="app_web_kwicgvsk.dll">
-     <Namespaces>
-      <Namespace Name="">
-       <Types>
-        <Type Name="_Default" Kind="Class" Accessibility="Public" ExternallyVisible="True">
-         <Members>
-          <Member Name="#LoadGrid(System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
-           <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-01-29 14:22:17Z" FixCategory="DependsOnFix">
-             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="\\psisimulation.com\datadfs\LEXTechPubs\Users\bcook\My Documents\Visual Studio 2017\Projects\IRDB\WebSite\Queue" File="Default.aspx.cs" Line="72">The query string passed to 'OleDbCommand.OleDbCommand(string, OleDbConnection)' in '_Default.LoadGrid(string, string, string)' could contain the following variables 'filterString', 'sortExpr', 'sortDirection'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
-            </Message>
-           </Messages>
-          </Member>
-         </Members>
-        </Type>
-       </Types>
-      </Namespace>
-     </Namespaces>
-    </Module>
-   </Modules>
-  </Target>
-  <Target Name="C:\Users\bcook\AppData\Local\Temp\tmpC52.tmp.cadir\bin\App_Web_l1jgnvjf.dll">
-   <Modules>
-    <Module Name="app_web_l1jgnvjf.dll">
+    <Module Name="app_web_0dgso1xh.dll">
      <Namespaces>
       <Namespace Name="">
        <Types>
@@ -35,35 +12,35 @@
          <Members>
           <Member Name="#GetMaxIllustrationControlNumberUniqueID(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-01-29 14:22:17Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-02-01 16:31:18Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="\\psisimulation.com\datadfs\LEXTechPubs\Users\bcook\My Documents\Visual Studio 2017\Projects\IRDB\WebSite\Test" File="Default.aspx.cs" Line="197">The query string passed to 'OleDbCommand.OleDbCommand(string, OleDbConnection)' in '_Default.GetMaxIllustrationControlNumberUniqueID(string, string)' could contain the following variables 'platformNumber', 'functionalGroup'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#InsertIntoDatabase(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-01-29 14:22:17Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-02-01 16:31:18Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="\\psisimulation.com\datadfs\LEXTechPubs\Users\bcook\My Documents\Visual Studio 2017\Projects\IRDB\WebSite\Test" File="Default.aspx.cs" Line="233">The query string passed to 'OleDbCommand.OleDbCommand(string, OleDbConnection)' in '_Default.InsertIntoDatabase(string)' could contain the following variables 'insertString'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#PopulateDropdownList(System.String,System.Web.UI.WebControls.DropDownList,System.String,System.String,System.Data.OleDb.OleDbConnection)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-01-29 14:22:17Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-02-01 16:31:18Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="\\psisimulation.com\datadfs\LEXTechPubs\Users\bcook\My Documents\Visual Studio 2017\Projects\IRDB\WebSite\Test" File="Default.aspx.cs" Line="47">The query string passed to 'OleDbCommand.OleDbCommand(string, OleDbConnection)' in '_Default.PopulateDropdownList(string, DropDownList, string, string, OleDbConnection)' could contain the following variables 'query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#PopulateListBox(System.String,System.Web.UI.WebControls.ListBox,System.String,System.String,System.Data.OleDb.OleDbConnection)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-01-29 14:22:17Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-02-01 16:31:18Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="\\psisimulation.com\datadfs\LEXTechPubs\Users\bcook\My Documents\Visual Studio 2017\Projects\IRDB\WebSite\Test" File="Default.aspx.cs" Line="74">The query string passed to 'OleDbCommand.OleDbCommand(string, OleDbConnection)' in '_Default.PopulateListBox(string, ListBox, string, string, OleDbConnection)' could contain the following variables 'query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ReadFromDatabase(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-01-29 14:22:17Z" FixCategory="DependsOnFix">
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-02-01 16:31:18Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="\\psisimulation.com\datadfs\LEXTechPubs\Users\bcook\My Documents\Visual Studio 2017\Projects\IRDB\WebSite\Test" File="Default.aspx.cs" Line="254">The query string passed to 'OleDbCommand.OleDbCommand(string, OleDbConnection)' in '_Default.ReadFromDatabase(string)' could contain the following variables 'readString'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
@@ -76,9 +53,9 @@
     </Module>
    </Modules>
   </Target>
-  <Target Name="C:\Users\bcook\AppData\Local\Temp\tmpC52.tmp.cadir\bin\App_Web_ya1tswkh.dll">
+  <Target Name="C:\Users\bcook\AppData\Local\Temp\tmpE9C.tmp.cadir\bin\App_Web_0g2j2wf3.dll">
    <Modules>
-    <Module Name="app_web_ya1tswkh.dll">
+    <Module Name="app_web_0g2j2wf3.dll">
      <Namespaces>
       <Namespace Name="">
        <Types>
@@ -86,43 +63,66 @@
          <Members>
           <Member Name="#GetMaxIllustrationControlNumberUniqueID(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-01-29 14:22:17Z" FixCategory="DependsOnFix">
-             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="\\psisimulation.com\datadfs\LEXTechPubs\Users\bcook\My Documents\Visual Studio 2017\Projects\IRDB\WebSite\Request" File="Default.aspx.cs" Line="504">The query string passed to 'OleDbCommand.OleDbCommand(string, OleDbConnection)' in '_Default.GetMaxIllustrationControlNumberUniqueID(string, string)' could contain the following variables 'platformNumber', 'functionalGroup'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-02-01 16:31:18Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="\\psisimulation.com\datadfs\LEXTechPubs\Users\bcook\My Documents\Visual Studio 2017\Projects\IRDB\WebSite\Request" File="Default.aspx.cs" Line="526">The query string passed to 'OleDbCommand.OleDbCommand(string, OleDbConnection)' in '_Default.GetMaxIllustrationControlNumberUniqueID(string, string)' could contain the following variables 'platformNumber', 'functionalGroup'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#InsertIntoDatabase(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-01-29 14:22:17Z" FixCategory="DependsOnFix">
-             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="\\psisimulation.com\datadfs\LEXTechPubs\Users\bcook\My Documents\Visual Studio 2017\Projects\IRDB\WebSite\Request" File="Default.aspx.cs" Line="540">The query string passed to 'OleDbCommand.OleDbCommand(string, OleDbConnection)' in '_Default.InsertIntoDatabase(string)' could contain the following variables 'insertString'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-02-01 16:31:18Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="\\psisimulation.com\datadfs\LEXTechPubs\Users\bcook\My Documents\Visual Studio 2017\Projects\IRDB\WebSite\Request" File="Default.aspx.cs" Line="562">The query string passed to 'OleDbCommand.OleDbCommand(string, OleDbConnection)' in '_Default.InsertIntoDatabase(string)' could contain the following variables 'insertString'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#PopulateDropdownList(System.String,System.Web.UI.WebControls.DropDownList,System.String,System.String,System.Data.OleDb.OleDbConnection)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-01-29 14:22:17Z" FixCategory="DependsOnFix">
-             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="\\psisimulation.com\datadfs\LEXTechPubs\Users\bcook\My Documents\Visual Studio 2017\Projects\IRDB\WebSite\Request" File="Default.aspx.cs" Line="111">The query string passed to 'OleDbCommand.OleDbCommand(string, OleDbConnection)' in '_Default.PopulateDropdownList(string, DropDownList, string, string, OleDbConnection)' could contain the following variables 'query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-02-01 16:31:18Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="\\psisimulation.com\datadfs\LEXTechPubs\Users\bcook\My Documents\Visual Studio 2017\Projects\IRDB\WebSite\Request" File="Default.aspx.cs" Line="112">The query string passed to 'OleDbCommand.OleDbCommand(string, OleDbConnection)' in '_Default.PopulateDropdownList(string, DropDownList, string, string, OleDbConnection)' could contain the following variables 'query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#PopulateListBox(System.String,System.Web.UI.WebControls.ListBox,System.String,System.String,System.Data.OleDb.OleDbConnection)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-01-29 14:22:17Z" FixCategory="DependsOnFix">
-             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="\\psisimulation.com\datadfs\LEXTechPubs\Users\bcook\My Documents\Visual Studio 2017\Projects\IRDB\WebSite\Request" File="Default.aspx.cs" Line="138">The query string passed to 'OleDbCommand.OleDbCommand(string, OleDbConnection)' in '_Default.PopulateListBox(string, ListBox, string, string, OleDbConnection)' could contain the following variables 'query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-02-01 16:31:18Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="\\psisimulation.com\datadfs\LEXTechPubs\Users\bcook\My Documents\Visual Studio 2017\Projects\IRDB\WebSite\Request" File="Default.aspx.cs" Line="139">The query string passed to 'OleDbCommand.OleDbCommand(string, OleDbConnection)' in '_Default.PopulateListBox(string, ListBox, string, string, OleDbConnection)' could contain the following variables 'query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ReadFromDatabase(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-01-29 14:22:17Z" FixCategory="DependsOnFix">
-             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="\\psisimulation.com\datadfs\LEXTechPubs\Users\bcook\My Documents\Visual Studio 2017\Projects\IRDB\WebSite\Request" File="Default.aspx.cs" Line="561">The query string passed to 'OleDbCommand.OleDbCommand(string, OleDbConnection)' in '_Default.ReadFromDatabase(string)' could contain the following variables 'readString'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-02-01 16:31:18Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="\\psisimulation.com\datadfs\LEXTechPubs\Users\bcook\My Documents\Visual Studio 2017\Projects\IRDB\WebSite\Request" File="Default.aspx.cs" Line="583">The query string passed to 'OleDbCommand.OleDbCommand(string, OleDbConnection)' in '_Default.ReadFromDatabase(string)' could contain the following variables 'readString'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ValidateIllustrationControlNumbers_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-01-29 14:22:17Z" FixCategory="DependsOnFix">
-             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="\\psisimulation.com\datadfs\LEXTechPubs\Users\bcook\My Documents\Visual Studio 2017\Projects\IRDB\WebSite\Request" File="Default.aspx.cs" Line="376">The query string passed to 'OleDbCommand.OleDbCommand(string, OleDbConnection)' in '_Default.ValidateIllustrationControlNumbers_Click(object, EventArgs)' could contain the following variables 'this.IllustrationControlNumbers.Items[itemToSelect].Value'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-02-01 16:31:18Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="\\psisimulation.com\datadfs\LEXTechPubs\Users\bcook\My Documents\Visual Studio 2017\Projects\IRDB\WebSite\Request" File="Default.aspx.cs" Line="397">The query string passed to 'OleDbCommand.OleDbCommand(string, OleDbConnection)' in '_Default.ValidateIllustrationControlNumbers_Click(object, EventArgs)' could contain the following variables 'this.IllustrationControlNumbers.Items[itemToSelect].Value'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="C:\Users\bcook\AppData\Local\Temp\tmpE9C.tmp.cadir\bin\App_Web_bujwmjq5.dll">
+   <Modules>
+    <Module Name="app_web_bujwmjq5.dll">
+     <Namespaces>
+      <Namespace Name="">
+       <Types>
+        <Type Name="_Default" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#LoadGrid(System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-02-01 16:31:18Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="\\psisimulation.com\datadfs\LEXTechPubs\Users\bcook\My Documents\Visual Studio 2017\Projects\IRDB\WebSite\Queue" File="Default.aspx.cs" Line="72">The query string passed to 'OleDbCommand.OleDbCommand(string, OleDbConnection)' in '_Default.LoadGrid(string, string, string)' could contain the following variables 'filterString', 'sortExpr', 'sortDirection'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>

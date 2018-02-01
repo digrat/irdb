@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Illustration Request" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <style type="text/css">
@@ -107,10 +108,10 @@
             <td style="vertical-align:top">
                 <h3>Attachments</h3>
                 <div class="form-group">
-                    <ajaxToolkit:AjaxFileUpload id="AjaxFileUpload" OnUploadComplete="AjaxFileUpload_UploadComplete" OnUploadCompleteAll="AjaxFileUpload_UploadCompleteAll" runat="server" Width="100%" ClearFileListAfterUpload="false" /> <br />  
+                    <ajaxToolkit:AjaxFileUpload id="AjaxFileUpload" OnUploadComplete="AjaxFileUpload_UploadComplete" OnUploadCompleteAll="AjaxFileUpload_UploadCompleteAll" runat="server" Width="100%" ClearFileListAfterUpload="true" /> <br />  
                     <!-- <asp:Image id="MyThrobber" ImageUrl="~/Images/ajax-loader.gif" Style="display:None" runat="server" /> -->
                     Note: If a request is being submitted with multiple ICNs, files with names beginning with an ICN will be attached only to the ICN it is named after. All other files will be attached to all requests.<br />
-                    <asp:UpdatePanel ID="UploadedFilesPanel" runat="server" UpdateMode="Conditional" >
+                    <asp:UpdatePanel ID="UploadedFilesPanel" runat="server" OnLoad="UploadedFilesPanel_Load" UpdateMode="Conditional">
                         <ContentTemplate>
                             <asp:GridView ID="UploadedFiles" runat="server" AutoGenerateColumns="false" EmptyDataText="There are no uploaded files." Width="100%" >
                                 <Columns>

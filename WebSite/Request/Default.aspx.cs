@@ -763,7 +763,7 @@ public partial class _Default : System.Web.UI.Page
 
                 UploadedFiles.DataSource = dt;
                 UploadedFiles.DataBind();
-                UploadedFilesPanel.Update();
+                //UploadedFilesPanel.Update();
             }
             else
             {
@@ -916,4 +916,9 @@ public partial class _Default : System.Web.UI.Page
         }
     }
 
+
+    protected void UploadedFilesPanel_Load(object sender, EventArgs e)
+    {
+        PopulateAttachmentFromCookie();
+    }
 }
