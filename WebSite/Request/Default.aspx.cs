@@ -652,7 +652,7 @@ public partial class _Default : System.Web.UI.Page
     protected void AjaxFileUpload_UploadCompleteAll(object sender, AjaxControlToolkit.AjaxFileUploadCompleteAllEventArgs e)
     {
         System.Diagnostics.Debug.WriteLine("AjaxFileUpload_UploadCompleteAll method fired");
-        UploadedFilesPanel.Update();
+        PopulateAttachmentFromCookie();
     }
 
     private string TimeStampFileName(string fileName)
@@ -725,7 +725,7 @@ public partial class _Default : System.Web.UI.Page
         {
             if (myCookie.HasKeys)
             {
-                System.Diagnostics.Debug.WriteLine("From Cookie - UserName: " + myCookie.Values["UserName"] + " RequestType: " + myCookie.Values["RequestType"]);
+                //System.Diagnostics.Debug.WriteLine("From Cookie - UserName: " + myCookie.Values["UserName"] + " RequestType: " + myCookie.Values["RequestType"]);
 
                 UserName.SelectedValue = Server.HtmlEncode(myCookie.Values["UserName"]);
                 Project.SelectedValue = Server.HtmlEncode(myCookie.Values["Project"]);
@@ -747,6 +747,7 @@ public partial class _Default : System.Web.UI.Page
         {
             if (myCookie.HasKeys)
             {
+                System.Diagnostics.Debug.WriteLine("myCookie.HasKeys == true");
                 DataTable dt = new DataTable();
                 dt.Columns.Add("FileName");
 
@@ -762,6 +763,11 @@ public partial class _Default : System.Web.UI.Page
 
                 UploadedFiles.DataSource = dt;
                 UploadedFiles.DataBind();
+                UploadedFilesPanel.Update();
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("myCookie.HasKeys == false");
             }
         }
     }
@@ -808,15 +814,14 @@ public partial class _Default : System.Web.UI.Page
                 newCookie.Values[amendedFileName] = filePath;  // Add the most recent file to the list
                 newCookie.Expires = DateTime.Now.AddDays(cookieExpireDays);  // Reset cookie expiration date
                 Response.Cookies.Add(newCookie);  // Overwrite old cookie with new cookie
+                PopulateAttachmentFromCookie();
             }
         }
         else
         {
             CreateAttachmentCookie(amendedFileName, filePath);
+            PopulateAttachmentFromCookie();
         }
-
-        PopulateAttachmentFromCookie();
-        UploadedFilesPanel.Update();
     }
 
 
@@ -824,6 +829,7 @@ public partial class _Default : System.Web.UI.Page
     {
         ClearCookie(attachmentsCookie);
         PopulateAttachmentFromCookie();
+        UploadedFiles.DataBind();
     }
 
     private string FindMatchesInAttachmentsCookie(string illustrationControlNumber)
@@ -848,7 +854,7 @@ public partial class _Default : System.Web.UI.Page
                     if (FileShouldBeAttached(illustrationControlNumber, subkeyName))
                     {
                         matchList = matchList + "|" + subkeyValue;
-                        System.Diagnostics.Debug.WriteLine("matchList: " + matchList);
+                        //System.Diagnostics.Debug.WriteLine("matchList: " + matchList);
                     }
                 }
             }
@@ -879,13 +885,13 @@ public partial class _Default : System.Web.UI.Page
         // If this filename looks like an ICN and the start of the filename matches this ICN, it's a match.
         if (System.Text.RegularExpressions.Regex.IsMatch(filename, regExMatch) && filename.Substring(0, substringSearchLength) == illustrationControlNumber)
         {
-            System.Diagnostics.Debug.WriteLine("Regex Match && Filename Match");
+            //System.Diagnostics.Debug.WriteLine("Regex Match && Filename Match");
             return true;
         }
         // If this filename doesn't look like an ICN, it's also a match.
         else if (!System.Text.RegularExpressions.Regex.IsMatch(filename, regExMatch))
         {
-            System.Diagnostics.Debug.WriteLine("No Regex Match");
+            //System.Diagnostics.Debug.WriteLine("No Regex Match");
             return true;
         }
         // The only other option is that this does look like an ICN, but it's not THIS ICN, in which case it's not a match.
