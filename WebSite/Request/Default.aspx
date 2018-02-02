@@ -108,32 +108,21 @@
             <td style="vertical-align:top">
                 <h3>Attachments</h3>
                 <div class="form-group">
-                    <ajaxToolkit:AjaxFileUpload id="AjaxFileUpload" OnUploadComplete="AjaxFileUpload_UploadComplete" OnUploadCompleteAll="AjaxFileUpload_UploadCompleteAll" runat="server" Width="100%" ClearFileListAfterUpload="true" /> <br />  
+                    <ajaxToolkit:AjaxFileUpload id="AjaxFileUpload" OnUploadComplete="AjaxFileUpload_UploadComplete" runat="server" Width="100%" ClearFileListAfterUpload="true" /> <br />  
                     <!-- <asp:Image id="MyThrobber" ImageUrl="~/Images/ajax-loader.gif" Style="display:None" runat="server" /> -->
-                    Note: If a request is being submitted with multiple ICNs, files with names beginning with an ICN will be attached only to the ICN it is named after. All other files will be attached to all requests.<br />
-                    <asp:UpdatePanel ID="UploadedFilesPanel" runat="server" OnLoad="UploadedFilesPanel_Load" UpdateMode="Conditional">
-                        <ContentTemplate>
-                            <asp:GridView ID="UploadedFiles" runat="server" AutoGenerateColumns="false" EmptyDataText="There are no uploaded files." Width="100%" >
-                                <Columns>
-                                    <asp:TemplateField HeaderText="File Name">
-                                        <ItemTemplate>
-                                            <asp:Label ID="FileName" Text='<%# Bind("FileName") %>' runat="server"></asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                </Columns>
-                                <AlternatingRowStyle BackColor="#ffffff" />
-                                <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />  
-                                <HeaderStyle BackColor="#222222" Font-Bold="false" ForeColor="#999999" />  
-                                <RowStyle BackColor="#DEDFDE" ForeColor="Black" />  
-                            </asp:GridView>
-                        </ContentTemplate>
-                        <Triggers>
-                            <asp:AsyncPostBackTrigger ControlID="AjaxFileUpload" EventName="UploadCompleteAll" />
-                            <asp:AsyncPostBackTrigger ControlID="ClearAttachments" EventName="Click" />
-                        </Triggers>
-                    </asp:UpdatePanel>
+                    Note: If a request is being submitted with multiple ICNs, files with names beginning with an ICN will be attached only to the ICN it is named after. All other files will be attached to all requests.<br /><br />
+                    <asp:DataList ID="UploadedFilesData" runat="server" Width="100%" GridLines="Horizontal" >
+                        <AlternatingItemStyle BackColor="#ffffff" />
+                        <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
+                        <HeaderStyle BackColor="#222222" Font-Bold="false" ForeColor="#999999" />  
+                        <ItemStyle BackColor="#DEDFDE" ForeColor="Black" />  
+                        <ItemTemplate>
+                            <asp:Label ID="FileName" Text='<%# Bind("FileName") %>' runat="server"></asp:Label>
+                        </ItemTemplate>
+                    </asp:DataList>  
                     <div style="text-align:right">
-                        <asp:Button ID="ClearAttachments" runat="server" Text="Clear Attachments" OnClick="ClearAttachments_Click" />
+                        <asp:Button ID="RefreshAttachments" runat="server" Text="Refresh" OnClick="RefreshAttachments_Click" />
+                        <asp:Button ID="ClearAttachments" runat="server" Text="Delete All" OnClick="ClearAttachments_Click" />
                     </div>
                 </div>
             </td>

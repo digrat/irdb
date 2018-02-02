@@ -160,9 +160,8 @@ public partial class _Default : System.Web.UI.Page
     {
         DataTable dt = new DataTable();
         dt.Columns.Add("filename");
-        UploadedFiles.DataSource = dt;
-        UploadedFiles.DataBind();
-        ViewState["CurrentTable"] = dt;
+        UploadedFilesData.DataSource = dt;
+        UploadedFilesData.DataBind();
     }
 
     /************************/
@@ -761,15 +760,19 @@ public partial class _Default : System.Web.UI.Page
                     dt.Rows.Add(dr);
                 }
 
-                UploadedFiles.DataSource = dt;
-                UploadedFiles.DataBind();
-                //UploadedFilesPanel.Update();
+                UploadedFilesData.DataSource = dt;
+                UploadedFilesData.DataBind();
             }
             else
             {
                 System.Diagnostics.Debug.WriteLine("myCookie.HasKeys == false");
+                DataTable dt = new DataTable();
+                dt.Columns.Add("FileName");
+                UploadedFilesData.DataSource = dt;
+                UploadedFilesData.DataBind();
             }
         }
+        System.Diagnostics.Debug.WriteLine("DataBind UploadedFilesData");
     }
 
     private void PopulateIcnListFromCookie()
@@ -829,7 +832,6 @@ public partial class _Default : System.Web.UI.Page
     {
         ClearCookie(attachmentsCookie);
         PopulateAttachmentFromCookie();
-        UploadedFiles.DataBind();
     }
 
     private string FindMatchesInAttachmentsCookie(string illustrationControlNumber)
@@ -917,7 +919,7 @@ public partial class _Default : System.Web.UI.Page
     }
 
 
-    protected void UploadedFilesPanel_Load(object sender, EventArgs e)
+    protected void RefreshAttachments_Click(object sender, EventArgs e)
     {
         PopulateAttachmentFromCookie();
     }
