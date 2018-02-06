@@ -5,13 +5,8 @@
     <div class="row">
         <h1>Requests Submitted</h1>
         <div>
-            List of requests, IDs, and attachments submitted.
-        </div>
-        <div>
-            List of failed requests.
-        </div>
-        <div>
-            <a href="Default.aspx">Submit another request</a>
+            <a href="Default.aspx">Submit another request</a><br />
+            <a href="../Queue/Default.aspx">View request queue</a>
         </div>
     </div>
 </asp:Content>

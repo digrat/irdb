@@ -50,45 +50,134 @@ public partial class _Default : System.Web.UI.Page
     {
         // Pass this connection to each method so it doesn't have to be reopened for each dropdown population
         OleDbConnection con = OpenDatabaseConnection();
-        LoadUserDropdown(con);
+        LoadUserDropdown();
         LoadProjectDropdown(con);
-        LoadRequestTypeDropdown(con);
-        LoadManualTypeDropdown(con);
+        LoadRequestTypeDropdown();
+        LoadManualTypeDropdown();
         LoadPlatformDropdown(con);
+    }
+
+    public void LoadUserDropdown()
+    {
+        // Populate User Dropdown List manually
+        DataTable populateList = new DataTable();
+        populateList.Columns.Add("displaytext");
+        populateList.Columns.Add("datavalue");
+        populateList.Rows.Add(new object[] {"athomas", "athomas"});
+        populateList.Rows.Add(new object[] { "aweiss", "aweiss" });
+        populateList.Rows.Add(new object[] { "bcook", "bcook" });
+        populateList.Rows.Add(new object[] { "balbers", "balbers" });
+        populateList.Rows.Add(new object[] { "bcrankshaw","bcrankshaw" });
+        populateList.Rows.Add(new object[] { "bgrigsby","bgrigsby" });
+        populateList.Rows.Add(new object[] { "bsturzl","bsturzl" });
+        populateList.Rows.Add(new object[] { "bwilson","bwilson" });
+        populateList.Rows.Add(new object[] { "cmeehan","cmeehan" });
+        populateList.Rows.Add(new object[] { "cterrell","cterrell" });
+        populateList.Rows.Add(new object[] { "djames","djames" });
+        populateList.Rows.Add(new object[] { "gkramer","gkramer" });
+        populateList.Rows.Add(new object[] { "jkeel","jkeel" });
+        populateList.Rows.Add(new object[] { "jlakes","jlakes" });
+        populateList.Rows.Add(new object[] { "jleyrer","jleyrer" });
+        populateList.Rows.Add(new object[] { "mdavis","mdavis" });
+        populateList.Rows.Add(new object[] { "mwood","mwood" });
+        populateList.Rows.Add(new object[] { "nmorford","nmorford" });
+        populateList.Rows.Add(new object[] { "pbarrington","pbarrington" });
+        populateList.Rows.Add(new object[] { "phaines","phaines" });
+        populateList.Rows.Add(new object[] { "rholifield","rholifield" });
+        populateList.Rows.Add(new object[] { "swoodall","swoodall" });
+        populateList.Rows.Add(new object[] { "trussell","trussell" });
+        PopulateDropdownList(populateList, UserName, "displaytext", "datavalue");
     }
 
     public void LoadUserDropdown(OleDbConnection con)
     {
+        // Populate User Dropdown List from backend db
         PopulateDropdownList("select distinct requested_by from ILLUSTRATION_REQUEST order by requested_by",
             UserName, "requested_by", "requested_by", con);
     }
-
     public void LoadProjectDropdown(OleDbConnection con)
     {
         PopulateDropdownList("select project_index_number,project_name from PROJECT where project_active = True order by project_name",
             Project, "project_name", "project_index_number", con);
     }
 
+    public void LoadRequestTypeDropdown()
+    {
+        // Populate Request Type Dropdown List manually
+        DataTable populateList = new DataTable();
+        populateList.Columns.Add("displaytext");
+        populateList.Columns.Add("datavalue");
+        populateList.Rows.Add(new object[] { "Correction", "Correction" });
+        populateList.Rows.Add(new object[] { "Convert", "Convert" });
+        populateList.Rows.Add(new object[] { "PCR", "PCR" });
+        populateList.Rows.Add(new object[] { "Peer Comment", "Peer Comment" });
+        populateList.Rows.Add(new object[] { "QA Comment", "QA Comment" });
+        populateList.Rows.Add(new object[] { "Validation Comment", "Validation Comment" });
+        populateList.Rows.Add(new object[] { "Verification Comment", "Verification Comment" });
+        populateList.Rows.Add(new object[] { "ECN", "ECN" });
+        populateList.Rows.Add(new object[] { "BLK UPD", "BLK UPD" });
+        PopulateDropdownList(populateList, RequestType, "displaytext", "datavalue");
+    }
+
     public void LoadRequestTypeDropdown(OleDbConnection con)
     {
+        // Populate Request Type Dropdown List from backend db
         PopulateDropdownList("select field_value from FIELDS where table='REQUEST_TRACKING' and field_name='request_type' order by field_description",
             RequestType, "field_value", "field_value", con);
     }
 
+    public void LoadManualTypeDropdown()
+    {
+        // Populate Request Type Dropdown List manually
+        DataTable populateList = new DataTable();
+        populateList.Columns.Add("displaytext");
+        populateList.Columns.Add("datavalue");
+        populateList.Rows.Add(new object[] { "Maintenance Manual", "M" });
+        populateList.Rows.Add(new object[] { "Descriptive Manual", "D" });
+        populateList.Rows.Add(new object[] { "RPSTL/Parts Manual", "R" });
+        populateList.Rows.Add(new object[] { "Operator/Flight Manual", "U" });
+        populateList.Rows.Add(new object[] { "Training Manual", "T" });
+        PopulateDropdownList(populateList, ManualType, "displaytext", "datavalue");
+    }
+
     public void LoadManualTypeDropdown(OleDbConnection con)
     {
+        // Populate Manual Type Dropdown List from backend db
         PopulateDropdownList("select field_value,field_name,field_description from FIELDS where table='ILLUSTRATION_CONTROL_NUMBER' and field_name='type' order by field_description",
             ManualType, "field_description", "field_value", con);
     }
 
+    public void LoadPlatformDropdown()
+    {
+        // Populate Platform Dropdown List manually
+        DataTable populateList = new DataTable();
+        populateList.Columns.Add("displaytext");
+        populateList.Columns.Add("datavalue");
+        populateList.Rows.Add(new object[] { "MH-60M (Blackhawk)", "1|air_fgc" });
+        populateList.Rows.Add(new object[] { "MH-47G (Chinook)", "2|air_fgc" });
+        populateList.Rows.Add(new object[] { "MH-6 (MELB)", "3|air_fgc" });
+        populateList.Rows.Add(new object[] { "Silent Knight Radar", "4|air_fgc" });
+        populateList.Rows.Add(new object[] { "Weapons", "5|air_fgc" });
+        populateList.Rows.Add(new object[] { "Panther", "6|ground_fgc" });
+        populateList.Rows.Add(new object[] { "Glock", "7|ground_fgc" });
+        populateList.Rows.Add(new object[] { "WS3 EFP Armor", "8|ground_fgc" });
+        populateList.Rows.Add(new object[] { "WS3 Wire Neutralization", "9|ground_fgc" });
+        populateList.Rows.Add(new object[] { "C-27", "10|air_sns" });
+        populateList.Rows.Add(new object[] { "MH-47G Reconfig", "11|air_fgc" });
+        PopulateDropdownList(populateList, ManualType, "displaytext", "datavalue");
+    }
+
     public void LoadPlatformDropdown(OleDbConnection con)
     {
+        // Populate Platform Dropdown List from backend db
         /* unique_category is a concatenation of <category>|<platform ID> ex: air_SNS|10
         This is required so that each entry has a unique value */
         PopulateDropdownList("select field_description,field_value + '|' + category as unique_category from FIELDS where table='ILLUSTRATION_CONTROL_NUMBER' and field_name='platform' order by field_description",
             AddPlatform, "field_description", "unique_category", con);
+        System.Diagnostics.Debug.WriteLine("AddPlatform populated");
         PopulateDropdownList("select field_description,field_value + '|' + category as unique_category from FIELDS where table='ILLUSTRATION_CONTROL_NUMBER' and field_name='platform' order by field_description",
             FindPlatform, "field_description", "unique_category", con);
+        System.Diagnostics.Debug.WriteLine("FindPlatform populated");
     }
 
     public void LoadFunctionalGroupDropdown(OleDbConnection con)
@@ -107,6 +196,21 @@ public partial class _Default : System.Web.UI.Page
         }
     }
 
+    // Populate drop down list from array
+    public void PopulateDropdownList(DataTable dt, DropDownList pageControl, string textField, string valueField)
+    {
+        // Add blank selection on top
+        ListItem li = new ListItem("", "none");
+        pageControl.Items.Add(li);
+        li.Selected = true;
+
+        pageControl.DataSource = dt;
+        pageControl.DataTextField = textField;
+        pageControl.DataValueField = valueField;
+        pageControl.DataBind();  // Not sure this is necessary?
+    }
+
+    // Populate drop down list from OLE database (MS Access)
     public void PopulateDropdownList(string query, DropDownList pageControl, string textField, string valueField, OleDbConnection con)
     {
         using (OleDbCommand cmd = new OleDbCommand(query, con))
@@ -230,7 +334,7 @@ public partial class _Default : System.Web.UI.Page
             }
 
             ClearFormOnSubmit();
-            Server.Transfer("Submitted.aspx", true);
+            Server.Transfer("Submitted.aspx", true);  // Load submit success page
 
         }
         else
@@ -917,7 +1021,6 @@ public partial class _Default : System.Web.UI.Page
             return null;
         }
     }
-
 
     protected void RefreshAttachments_Click(object sender, EventArgs e)
     {

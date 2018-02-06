@@ -153,7 +153,6 @@
                             </td>
                             <td style="text-align:left">
                                 <asp:DropDownList ID="FindPlatform" runat="server" DataTextField="field_description" AppendDataBoundItems="true" OnSelectedIndexChanged="FindPlatform_SelectedIndexChanged" AutoPostBack="true">
-                                    <asp:ListItem Text="" Value="none"/>
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -220,7 +219,6 @@
                             </td>
                             <td style="text-align:left">
                                 <asp:DropDownList ID="AddPlatform" runat="server" DataTextField="field_description" AppendDataBoundItems="true" OnSelectedIndexChanged="AddPlatform_SelectedIndexChanged" AutoPostBack="true">
-                                    <asp:ListItem Text="" Value="none"/>
                                 </asp:DropDownList>
                             </td>
                         </tr>
