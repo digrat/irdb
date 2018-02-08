@@ -24,13 +24,22 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite", "WebSite\", "{8F2
 		SlnRelativePath = "WebSite\"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "irdb_forms", "irdb_forms\irdb_forms.csproj", "{3267ECCD-8A60-4E5A-9944-90F333CFA4B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8F211050-08A2-480E-8E48-1202331D1A71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8F211050-08A2-480E-8E48-1202331D1A71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F211050-08A2-480E-8E48-1202331D1A71}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F211050-08A2-480E-8E48-1202331D1A71}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{3267ECCD-8A60-4E5A-9944-90F333CFA4B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3267ECCD-8A60-4E5A-9944-90F333CFA4B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3267ECCD-8A60-4E5A-9944-90F333CFA4B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3267ECCD-8A60-4E5A-9944-90F333CFA4B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
